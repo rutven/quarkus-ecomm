@@ -3,6 +3,7 @@ package name.legkodymov.ecom.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "order_items")
 public class OrderItem {
 
     @Id
