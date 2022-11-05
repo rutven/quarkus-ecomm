@@ -1,5 +1,7 @@
 package name.legkodymov.ecom.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +12,9 @@ public class OrderItem {
     @GeneratedValue
     private Long id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Order order;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Order order;
 
     @Column(name = "product_id")
     private Long productId;
@@ -28,13 +31,13 @@ public class OrderItem {
         this.id = id;
     }
 
-//    public Order getOrder() {
-//        return order;
-//    }
-//
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     public Long getProductId() {
         return productId;

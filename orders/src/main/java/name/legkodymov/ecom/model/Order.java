@@ -1,7 +1,6 @@
 package name.legkodymov.ecom.model;
 
 import javax.persistence.*;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +16,11 @@ public class Order {
     @Column(name = "user_id")
     private Long userId;
 
-//    @OneToMany(
-//            mappedBy = "order",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true)
-//    private List<OrderItem> items;
+    @OneToMany(
+            mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<OrderItem> items;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt;
@@ -45,13 +44,13 @@ public class Order {
         this.userId = userId;
     }
 
-//    public List<OrderItem> getItems() {
-//        return items;
-//    }
-//
-//    public void setItems(List<OrderItem> items) {
-//        this.items = items;
-//    }
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
@@ -69,17 +68,17 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-//    public void addOrderItem(OrderItem item) {
-//        items.add(item);
-//        item.setOrder(this);
-//    }
-//
-//    public void removeOrderItem(OrderItem item) {
-//        items.remove(item);
-//        item.setOrder(null);
-//    }
+    public void addOrderItem(OrderItem item) {
+        items.add(item);
+        item.setOrder(this);
+    }
+
+    public void removeOrderItem(OrderItem item) {
+        items.remove(item);
+        item.setOrder(null);
+    }
 
     public Order() {
-//        items = new ArrayList<>();
+        items = new ArrayList<>();
     }
 }
