@@ -29,7 +29,7 @@ public class OrderResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Order createOrder(Order order) {
-        return orderService.createOrder(order);
+        return orderService.createOrderAndSendNotification(order);
     }
 
     @GET
