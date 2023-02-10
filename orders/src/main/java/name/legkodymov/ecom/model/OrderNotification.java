@@ -1,10 +1,21 @@
 package name.legkodymov.ecom.model;
 
-public class OrderNotification {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "order_notifications")
+public class OrderNotification {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
+    @Column(name ="order_id")
     private Long orderId;
+    @Column(name = "user_id")
     private Long userId;
+    @Column(name = "total_price")
     private Double totalPrice;
+
 
     public Long getOrderId() {
         return orderId;
@@ -37,5 +48,13 @@ public class OrderNotification {
                 ", userId=" + userId +
                 ", totalPrice=" + totalPrice +
                 '}';
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
