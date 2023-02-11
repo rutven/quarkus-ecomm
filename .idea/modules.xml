@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/orders/orders.iml" filepath="$PROJECT_DIR$/orders/orders.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/orders.main.iml" filepath="$PROJECT_DIR$/.idea/modules/orders.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/payments/payments.iml" filepath="$PROJECT_DIR$/payments/payments.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payments.main.iml" filepath="$PROJECT_DIR$/.idea/modules/payments.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/quarkus-ecomm.iml" filepath="$PROJECT_DIR$/.idea/quarkus-ecomm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/orders/ecomm-root.orders.main.iml" filepath="$PROJECT_DIR$/.idea/modules/orders/ecomm-root.orders.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payments/ecomm-root.payments.main.iml" filepath="$PROJECT_DIR$/.idea/modules/payments/ecomm-root.payments.main.iml" />
     </modules>
   </component>
 </project>
