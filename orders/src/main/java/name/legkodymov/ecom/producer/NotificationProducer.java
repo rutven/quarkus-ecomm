@@ -3,6 +3,7 @@ package name.legkodymov.ecom.producer;
 import io.quarkus.scheduler.Scheduled;
 import name.legkodymov.ecom.model.NotificationStatus;
 import name.legkodymov.ecom.model.OrderNotification;
+import name.legkodymov.ecom.model.OrderNotificationEvent;
 import name.legkodymov.ecom.repository.OrderNotificationRepository;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
@@ -23,7 +24,7 @@ public class NotificationProducer {
     OrderNotificationRepository notificationRepository;
 
     @Channel("order-notifications")
-    Emitter<OrderNotificationDAO> orderNotificationEmitter;
+    Emitter<OrderNotificationEvent> orderNotificationEmitter;
 
     @Scheduled(every = "1s")
     @Transactional
@@ -39,7 +40,7 @@ public class NotificationProducer {
     @Transactional
     private void processNotification(OrderNotification notification) {
         LOG.info("Processing notification" + notification.toString());
-        OrderNotificationDAO dao = new OrderNotificationDAO(notification);
+        OrderNotificationEvent dao = new OrderNotificationEvent(notification);
         orderNotificationEmitter.send(dao);
         notification.setStatus(NotificationStatus.PROCESSED);
         notificationRepository.persistAndFlush(notification);

@@ -1,10 +1,18 @@
 package name.legkodymov.ecom.model;
 
-public class OrderNotification {
-
+public class OrderNotificationEvent {
+    private Long id;
     private Long orderId;
     private Long userId;
     private Double totalPrice;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getOrderId() {
         return orderId;
@@ -30,10 +38,14 @@ public class OrderNotification {
         this.totalPrice = totalPrice;
     }
 
+    public OrderNotificationEvent() {
+    }
+
     @Override
     public String toString() {
-        return "OrderNotification{" +
-                "orderId=" + orderId +
+        return "OrderNotificationEvent{" +
+                "id=" + id +
+                ", orderId=" + orderId +
                 ", userId=" + userId +
                 ", totalPrice=" + totalPrice +
                 '}';
