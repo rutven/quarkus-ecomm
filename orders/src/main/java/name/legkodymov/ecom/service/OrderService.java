@@ -90,4 +90,8 @@ public class OrderService {
     private Long generateLong(long min, long max) {
         return min + (long) (Math.random() * (max - min));
     }
+
+    public long getOrderCount() {
+        return orderRepository.count();
+    }
 }

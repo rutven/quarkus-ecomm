@@ -26,7 +26,6 @@ public class PaymentService {
         return payment;
     }
 
-    @Transactional
     private void processPayment(Payment payment) {
         payment.setPaymentDate(LocalDateTime.now());
         payment.setPaymentId(new Random().nextLong());

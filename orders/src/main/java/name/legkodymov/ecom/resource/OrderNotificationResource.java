@@ -1,5 +1,6 @@
 package name.legkodymov.ecom.resource;
 
+import name.legkodymov.ecom.model.CountResult;
 import name.legkodymov.ecom.model.OrderNotification;
 import name.legkodymov.ecom.repository.OrderNotificationRepository;
 
@@ -17,6 +18,7 @@ public class OrderNotificationResource {
 
     @Inject
     OrderNotificationRepository notificationRepository;
+
     @GET
     public List<OrderNotification> getALl() {
         return notificationRepository.listAll();
@@ -30,7 +32,16 @@ public class OrderNotificationResource {
 
     @GET
     @Path("user/{id}")
-    public List<OrderNotification> getByUserId(@PathParam("id")Long userId) {
+    public List<OrderNotification> getByUserId(@PathParam("id") Long userId) {
         return notificationRepository.listByUserId(userId);
     }
+
+    @GET
+    @Path("/count")
+    public CountResult getCount() {
+        CountResult result = new CountResult();
+        result.setCount(notificationRepository.count());
+        return result;
+    }
+
 }

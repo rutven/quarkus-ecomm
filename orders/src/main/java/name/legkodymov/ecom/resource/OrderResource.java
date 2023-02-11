@@ -1,5 +1,6 @@
 package name.legkodymov.ecom.resource;
 
+import name.legkodymov.ecom.model.CountResult;
 import name.legkodymov.ecom.model.Order;
 import name.legkodymov.ecom.service.OrderService;
 
@@ -36,5 +37,13 @@ public class OrderResource {
     @Path("/test")
     public Order createTestOrder() {
         return orderService.createTestOrder();
+    }
+
+    @GET
+    @Path("/count")
+    public CountResult getCount() {
+        CountResult result = new CountResult();
+        result.setCount(orderService.getOrderCount());
+        return result;
     }
 }

@@ -1,5 +1,6 @@
 package name.legkodymov.ecom.resource;
 
+import name.legkodymov.ecom.model.CountResult;
 import name.legkodymov.ecom.model.Payment;
 import name.legkodymov.ecom.repository.PaymentRepository;
 
@@ -28,4 +29,13 @@ public class PaymentResource {
     public List<Payment> getByOrderId(@PathParam("id") Long orderId) {
         return paymentRepository.listByOrderId(orderId);
     }
+
+    @GET
+    @Path("/count")
+    public CountResult getCount() {
+        CountResult result = new CountResult();
+        result.setCount(paymentRepository.count());
+        return result;
+    }
+
 }
