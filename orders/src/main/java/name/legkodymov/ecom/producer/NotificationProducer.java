@@ -36,7 +36,6 @@ public class NotificationProducer {
         }
     }
 
-    @Transactional
     private void processNotification(OrderNotification notification) {
         LOG.info("Processing notification" + notification.toString());
         OrderNotificationDAO dao = new OrderNotificationDAO(notification);
