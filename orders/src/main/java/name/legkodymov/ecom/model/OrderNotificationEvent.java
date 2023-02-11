@@ -1,10 +1,8 @@
-package name.legkodymov.ecom.producer;
+package name.legkodymov.ecom.model;
 
 import name.legkodymov.ecom.model.OrderNotification;
 
-import javax.persistence.Column;
-
-public class OrderNotificationDAO {
+public class OrderNotificationEvent {
     private Long id;
     private Long orderId;
     private Long userId;
@@ -42,9 +40,9 @@ public class OrderNotificationDAO {
         this.totalPrice = totalPrice;
     }
 
-    public OrderNotificationDAO() {
+    public OrderNotificationEvent() {
     }
-    public OrderNotificationDAO(OrderNotification notification) {
+    public OrderNotificationEvent(OrderNotification notification) {
         this.id = notification.getId();
         this.orderId = notification.getOrderId();
         this.userId = notification.getUserId();
