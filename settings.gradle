@@ -1,0 +1,3 @@
+rootProject.name = 'ecomm-root'
+include 'orders'
+include 'payments'
