@@ -1,5 +1,6 @@
 package name.legkodymov.ecom.service;
 
+import name.legkodymov.ecom.model.NotificationStatus;
 import name.legkodymov.ecom.model.Order;
 import name.legkodymov.ecom.model.OrderItem;
 import name.legkodymov.ecom.model.OrderNotification;
@@ -45,6 +46,7 @@ public class OrderService {
         notification.setOrderId(order.getId());
         notification.setUserId(order.getUserId());
         notification.setTotalPrice(order.getTotalPrice());
+        notification.setStatus(NotificationStatus.CREATED);
         notificationRepository.persist(notification);
     }
 

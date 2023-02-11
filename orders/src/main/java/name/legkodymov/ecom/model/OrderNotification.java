@@ -16,6 +16,8 @@ public class OrderNotification {
     @Column(name = "total_price")
     private Double totalPrice;
 
+    @Enumerated
+    private NotificationStatus status;
 
     public Long getOrderId() {
         return orderId;
@@ -41,13 +43,12 @@ public class OrderNotification {
         this.totalPrice = totalPrice;
     }
 
-    @Override
-    public String toString() {
-        return "OrderNotification{" +
-                "orderId=" + orderId +
-                ", userId=" + userId +
-                ", totalPrice=" + totalPrice +
-                '}';
+    public NotificationStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(NotificationStatus status) {
+        this.status = status;
     }
 
     public void setId(Long id) {
@@ -56,5 +57,16 @@ public class OrderNotification {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderNotification{" +
+                "id=" + id +
+                ", orderId=" + orderId +
+                ", userId=" + userId +
+                ", totalPrice=" + totalPrice +
+                ", status=" + status +
+                '}';
     }
 }
