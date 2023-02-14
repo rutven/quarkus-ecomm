@@ -2,6 +2,8 @@ package name.legkodymov.ecom.service;
 
 import name.legkodymov.ecom.model.OrderNotificationEvent;
 import name.legkodymov.ecom.model.Payment;
+import name.legkodymov.ecom.model.PaymentCreateEvent;
+import name.legkodymov.ecom.model.PaymentStatus;
 import name.legkodymov.ecom.repository.PaymentRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -17,17 +19,21 @@ public class PaymentService {
     PaymentRepository paymentRepository;
 
     @Transactional
-    public Payment processOrder(OrderNotificationEvent event) {
+    public PaymentCreateEvent createPayment(OrderNotificationEvent orderNotificationEvent) {
         Payment payment = new Payment();
-        payment.setOrderId(event.getOrderId());
-        payment.setAmount(event.getTotalPrice());
-        processPayment(payment);
+        payment.setOrderId(orderNotificationEvent.getOrderId());
+        payment.setAmount(orderNotificationEvent.getTotalPrice());
+        payment.setCreated(LocalDateTime.now());
+        payment.setStatus(PaymentStatus.CREATED);
         paymentRepository.persist(payment);
-        return payment;
+        PaymentCreateEvent paymentCreateEvent = new PaymentCreateEvent();
+        paymentCreateEvent.setPaymentId(payment.getId());
+        paymentCreateEvent.setOrderId(payment.getOrderId());
+        return paymentCreateEvent;
     }
 
     private void processPayment(Payment payment) {
         payment.setPaymentDate(LocalDateTime.now());
-        payment.setPaymentId(new Random().nextLong());
+        payment.setTransactionId(new Random().nextLong());
     }
 }

@@ -25,7 +25,7 @@ public class NotificationProducer {
     @Inject
     OrderNotificationRepository notificationRepository;
 
-    @Channel("order-notifications")
+    @Channel("order-create")
     Emitter<OrderNotificationEvent> orderNotificationEmitter;
 
     @Scheduled(every = "1s")
