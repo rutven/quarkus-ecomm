@@ -13,13 +13,19 @@ public class Payment {
     @Column(name = "order_id", nullable = false)
     private Long orderId;
 
-    @Column(name = "payment_id")
-    private Long paymentId;
+    @Column(name = "transaction_id")
+    private Long transactionId;
 
     private Double amount;
 
+    @Column(name = "created", columnDefinition = "TIMESTAMP")
+    private LocalDateTime created;
+
     @Column(name = "payment_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime paymentDate;
+
+    @Enumerated
+    private PaymentStatus status;
 
     public Long getId() {
         return id;
@@ -29,12 +35,12 @@ public class Payment {
         this.id = id;
     }
 
-    public Long getPaymentId() {
-        return paymentId;
+    public Long getTransactionId() {
+        return transactionId;
     }
 
-    public void setPaymentId(Long paymentId) {
-        this.paymentId = paymentId;
+    public void setTransactionId(Long paymentId) {
+        this.transactionId = paymentId;
     }
 
     public Double getAmount() {
@@ -61,14 +67,32 @@ public class Payment {
         this.orderId = orderId;
     }
 
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public PaymentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(PaymentStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Payment{" +
                 "id=" + id +
                 ", orderId=" + orderId +
-                ", paymentId=" + paymentId +
+                ", transactionId=" + transactionId +
                 ", amount=" + amount +
+                ", created=" + created +
                 ", paymentDate=" + paymentDate +
+                ", status=" + status +
                 '}';
     }
 }
